@@ -42,14 +42,14 @@ const ProfileSchema = new mongoose.Schema({
         type: String
       },
       from: {
-        type: Data,
+        type: Date,
         required: true
       },
       to: {
         type: Date
       },
       current: {
-        type: Boolead,
+        type: Boolean,
         default: false
       },
       description: {
@@ -60,10 +60,6 @@ const ProfileSchema = new mongoose.Schema({
   education: [
     {
       school: {
-        type: String,
-        required: true
-      },
-      degree: {
         type: String,
         required: true
       },
@@ -91,7 +87,6 @@ const ProfileSchema = new mongoose.Schema({
       }
     }
   ],
-
   social: {
     youtube: {
       type: String
@@ -109,7 +104,6 @@ const ProfileSchema = new mongoose.Schema({
       type: String
     }
   },
-
   date: {
     type: Date,
     default: Date.now

@@ -4,7 +4,7 @@ const Profile = require('../../models/User');
 const User = require('../../models/User');
 
 const auth = require('../../middleware/auth');
-const { check, validationResult } = require('express-validator/check');
+const { check, validationResult } = require('express-validator');
 
 //@route GET api/profile/me
 //@desc GET current users profile
@@ -44,6 +44,7 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      console.log('hello inside error');
       return res.status(400).json({ errors: errors.array() });
     }
 
@@ -82,7 +83,7 @@ router.post(
     if (facebook) profileFields.social.facebook = facebook;
     if (linkedin) profileFields.social.linkedin = linkedin;
     if (instagram) profileFields.social.instagram = instagram;
-
+    console.log(req.user.id);
     try {
       let profile = await Profile.findOne({ user: req.user.id });
 
