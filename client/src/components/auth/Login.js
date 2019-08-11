@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
+import { Link } from 'react-router-dom';
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -23,6 +24,11 @@ const Login = ({ login, isAuthenticated }) => {
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
+  const onSubmit = async e => {
+    e.preventDefault();
+    console.log('success');
+  };
+
   return (
     <Fragment>
       <h1 className='large text-primary'>Sign In</h1>
