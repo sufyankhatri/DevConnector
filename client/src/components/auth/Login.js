@@ -3,7 +3,6 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
-import { Link } from 'react-router-dom';
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -16,17 +15,13 @@ const Login = ({ login, isAuthenticated }) => {
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async e => {
-    e.preventDefault();
-    login({ email, password });
-  };
   //Redirect if logged in
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
   const onSubmit = async e => {
     e.preventDefault();
-    console.log('success');
+    login({ email, password });
   };
 
   return (
